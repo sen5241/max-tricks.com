@@ -4,4 +4,4 @@ title: max-tricks.com
 
 max-tricks.com coming soon
 
-Link to [metro]
+Link to [[metro]]
