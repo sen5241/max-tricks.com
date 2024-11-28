@@ -3,7 +3,6 @@ title: Introduction
 ---
 
 %%
-
 http://20objects.com
 http://darwingrosse.com/20Objects/lesson01.html
 http://darwingrosse.com/20Objects/lesson02.html

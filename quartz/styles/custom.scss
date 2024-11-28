@@ -1,3 +1,249 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+body {
+// 	background-color: #e5e5e5;
+// 	background-image: radial-gradient(circle at 50% 50%, #b6b6b6 0px, #b6b6b6 1px, #e5e5e5 1px, #e5e5e5 100%);
+	background-size: 15px 15px;
+	background-repeat: repeat;
+}
+
+
+
+
+
+:root {
+--radius: 3px;
+--borderColor: #808080;
+--backgroundColour: #333333;
+--inletColor: #c0c2c4;
+--outletColor: var(--inletColor);
+--textColor: #fff;
+--inlet:  radial-gradient(circle at var(--radius) 0%,   var(--inletColor)  0%, var(--inletColor)  calc(var(--radius) - 0px), transparent calc(var(--radius) + 1px), transparent 100%);
+--outlet: radial-gradient(circle at var(--radius) 100%, var(--outletColor) 0%, var(--outletColor) calc(var(--radius) - 0px), transparent calc(var(--radius) + 1px), transparent 100%);
+--padding: 5px; /* The number of pixels to bring the objects' text and inlets from the left and right sides */
+}
+
+code.max.object {
+	background-color: var(--backgroundColour);
+	color: var(--textColor);
+	font-family: Arial;
+	font-size: 12px;
+	line-height: 100%;
+	border-radius: 0px;
+	border-style: solid;
+	padding: 0px;
+	border: 0;
+	display: inline-flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 0px var(--padding);
+}
+
+/* Make the selection in the callout transparent... only highlighting objects */
+code.max.object::selection {
+	background-color: red;
+}
+/* ... Simulation of the idea. */
+::selection {
+	background-color: transparent;
+}
+
+
+code.max.object[class*="in"]::before,
+code.max.object[class*="out"]::after {
+	content: '';
+	margin: 0 calc(var(--padding) * -1); /* Negative margin to accommodate the left and right padding */
+	height: calc(var(--radius) + 1px);
+	background-color: var(--borderColor);
+	background-image: none;
+	background-repeat: no-repeat;
+	background-size: calc(var(--radius) * 2) auto;
+	
+	border-width: 0 var(--padding); /* Borders top and bottom only */
+	border-style: solid;
+	border-color: var(--borderColor);
+
+	/* Initial values */
+	--inlets: 0;
+	--outlets: 0;
+
+	/* The placement of the inlet/outlet general expression is: 
+	--inletX: calc(100% * calc(var(--inlets) - 1) 0px; / (var(--inlets) - 1)) 0px;
+	… which means the bottom could be simplified to remove repetition, but I don't want to  to obscure to read.
+	*/
+
+	--inlet1: 0px 0px;
+	--inlet2: calc(100% * 1 / (var(--inlets) - 1)) 0px;
+	--inlet3: calc(100% * 2 / (var(--inlets) - 1)) 0px;
+	--inlet4: calc(100% * 3 / (var(--inlets) - 1)) 0px;
+	--inlet5: calc(100% * 4 / (var(--inlets) - 1)) 0px;
+	--inlet6: calc(100% * 5 / (var(--inlets) - 1)) 0px;
+	--inlet7: calc(100% * 6 / (var(--inlets) - 1)) 0px;
+	--inlet8: calc(100% * 7 / (var(--inlets) - 1)) 0px;
+	--inlet9: calc(100% * 8 / (var(--inlets) - 1)) 0px;
+	--inlet10: calc(100% * 9 / (var(--inlets) - 1)) 0px;
+	--inlet11: calc(100% * 10 / (var(--inlets) - 1)) 0px;
+	--inlet12: calc(100% * 11 / (var(--inlets) - 1)) 0px;
+
+	--outlet1: 0px 0px;
+	--outlet2: calc(100% * 1 / (var(--outlets) - 1)) 0px;
+	--outlet3: calc(100% * 2 / (var(--outlets) - 1)) 0px;
+	--outlet4: calc(100% * 3 / (var(--outlets) - 1)) 0px;
+	--outlet5: calc(100% * 4 / (var(--outlets) - 1)) 0px;
+	--outlet6: calc(100% * 5 / (var(--outlets) - 1)) 0px;
+	--outlet7: calc(100% * 6 / (var(--outlets) - 1)) 0px;
+	--outlet8: calc(100% * 7 / (var(--outlets) - 1)) 0px;
+	--outlet9: calc(100% * 8 / (var(--outlets) - 1)) 0px;
+	--outlet10: calc(100% * 9 / (var(--outlets) - 1)) 0px;
+	--outlet11: calc(100% * 10 / (var(--outlets) - 1)) 0px;
+	--outlet12: calc(100% * 11 / (var(--outlets) - 1)) 0px;
+}
+
+code.max.object[class*="in"]::before {
+	min-width: calc(var(--radius) * 2 * (var(--inlets) + 1));
+	margin-bottom: 1px;
+}
+
+code.max.object[class*="out"]::after { 
+	min-width: calc(var(--radius) * 2 * (var(--outlets) + 1));
+	margin-top: 1px;
+}
+
+
+
+code.max.object.in0::before {
+	--inlets: 0;
+}
+
+code.max.object.in1::before {
+	--inlets: 1;
+	background-image: var(--inlet);
+	background-position: var(--inlet1);
+}
+
+code.max.object.in2::before {
+	--inlets: 2;
+	background-image:    var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2);
+}
+
+code.max.object.in3::before {
+	--inlets: 3;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3);
+}
+code.max.object.in4::before {
+	--inlets: 4;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4);
+}
+code.max.object.in5::before {
+	--inlets: 5;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5);
+}
+code.max.object.in6::before {
+	--inlets: 6;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6);
+}
+code.max.object.in7::before {
+	--inlets: 7;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7);
+}
+code.max.object.in8::before {
+	--inlets: 8;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8);
+}
+code.max.object.in9::before {
+	--inlets: 9;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9);
+}
+code.max.object.in10::before {
+	--inlets: 10;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9), var(--inlet10);
+}
+code.max.object.in11::before {
+	--inlets: 11;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9), var(--inlet10), var(--inlet11);
+}
+code.max.object.in12::before {
+	--inlets: 12;
+	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
+	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9), var(--inlet10), var(--inlet11), var(--inlet12);
+}
+
+
+code.max.object.out0::after {
+	--outlets: 0;
+}
+
+code.max.object.out1::after {
+	--outlets: 1;
+	background-image: var(--outlet);
+	background-position: var(--outlet1);
+}
+
+code.max.object.out2::after {
+	--outlets: 2;
+	background-image:    var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2);
+}
+
+code.max.object.out3::after {
+	--outlets: 3;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3);
+}
+code.max.object.out4::after {
+	--outlets: 4;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4);
+}
+code.max.object.out5::after {
+	--outlets: 5;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5);
+}
+code.max.object.out6::after {
+	--outlets: 6;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6);
+}
+code.max.object.out7::after {
+	--outlets: 7;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7);
+}
+code.max.object.out8::after {
+	--outlets: 8;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8);
+}
+code.max.object.out9::after {
+	--outlets: 9;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9);
+}
+code.max.object.out10::after {
+	--outlets: 10;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9), var(--outlet10);
+}
+code.max.object.out11::after {
+	--outlets: 11;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9), var(--outlet10), var(--outlet11);
+}
+code.max.object.out12::after {
+	--outlets: 12;
+	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
+	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9), var(--outlet10), var(--outlet11), var(--outlet12);
+}
