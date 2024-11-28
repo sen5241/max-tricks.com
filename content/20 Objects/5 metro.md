@@ -59,7 +59,7 @@ This is a lot more obvious, and makes our patch more user-friendly. The toggle o
 Finally, since the toggle is really a numeric (0 and 1) object, we can send it a number to specifically set its state. If we connect a few message boxes to the inlet of the toggle, we can force it to a specific state on demand:
 
 
-![L05p08.gif]]
+![[L05p08.gif]]
 
 
 # Exercise

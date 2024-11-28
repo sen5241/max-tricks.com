@@ -72,7 +72,7 @@ The values move about, and sometimes seem to have an upward or downward trajecto
 You can change the range and step size using the second and third inlets respectively. You can also set the current output position (and the starting point of the next step) by sending a number into the left inlet:
 
 
-![[L06p06.gif)]]
+![[L06p06.gif]]
 
 
 By default, the drunk object is allowed to output duplicate numbers, since a step size of zero is always within the acceptable range values. If you want to avoid duplicate numbers from being output, you can make the step size a negative number. Therefore, a step size of "-4" would represent steps from 1 to 3 - you would never have a step size of 0, since this would produce a duplicate output.
