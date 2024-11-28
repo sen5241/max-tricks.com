@@ -1,5 +1,5 @@
 ---
-title: The button object
+title: 1. The button object
 tags: [max, button, ui]
 ---
 If you've done your prerequisite work (meaning that you watched some Max videos), you should understand the following:

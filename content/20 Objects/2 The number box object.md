@@ -1,5 +1,5 @@
 ---
-title: The number box object
+title: 2. The number box object
 tags: [max, intro, ui]
 ---
 While it is fun to bang away at `button`s, we need to get to the heart of Max programming - and that involves numbers. Much of the number handling within the program is actually encapsulated into a few objects, with the most important being the number box.
@@ -41,7 +41,7 @@ The top-most attribute should be called "Display Format", and the current value 
 Close the inspector and lock the patch. Scroll the top number box, and see how the numbers in the lower box change. Hexadecimal digits go from 0 through 9, then A through F, giving us 16 digits for the base 16 number system. As you scroll the top box, scroll down to a negative number; you will notice that the lower number box fills with F's at the beginning. You can make the number box larger by hovering your mouse over the right edge of the object until a little box appears. That box is a resizing control; clicking and dragging on this box will make the number box longer.
 
 
-![](2.6 numBox006.png)
+![[2.6 numBox006.png]]
 
 Let's say that we don't want the numbers to go into negative territory, since that makes for really large hex numbers. Select the top number box and open the inspector (with the Inspector option in the Object menu), scroll to the bottom of the attribute list and find the attribute labeled "Minimum Value". It is currently set to ; double-click on that value and change it to "0". This will restrict the number box values to non-negative numbers, preventing the display of too-large hex numbers.
 

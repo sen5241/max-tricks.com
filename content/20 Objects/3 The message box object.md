@@ -1,5 +1,5 @@
 ---
-title: The message box object
+title: 3. The message box object
 ---
 Many of the things we need to do involve numbers, but even more will use text within Max: words used as commands, words used to set parameters and words used for user display purposes. Having an object that can use text as well as numbers is important working with Max, and is accomplished using the message box.
 

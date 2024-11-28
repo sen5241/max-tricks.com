@@ -6,8 +6,8 @@ draft: false
 
 
 
-This is an unauthorised\* verbatim reproduction of Darwin Grosse's [*20 Objects Curriculum*: A Pragmatic Method for Learning Max/MSP/Jitter and Max for Live](http://20objects.com). 
-It has been replicated here to preserve an important resource for learning Max.
+This is an unauthorised\* reproduction of Darwin Grosse's [*20 Objects Curriculum*: A Pragmatic Method for Learning Max/MSP/Jitter and Max for Live](http://20objects.com). 
+It has been replicated here to preserve an important resource for learning [Max](https://cycling74.com).
 
 %%
 ~~While most of the modules in this series are by Alex Mesker, this first module of the *20 Objects Curriculum* content is by Darwin Grosse, and is replicated here to preserve an important resource for learning Max.~~
