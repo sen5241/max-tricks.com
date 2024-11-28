@@ -153,9 +153,9 @@ If you click on the top-most button, you will see that the input is send out to 
 
 To test this out, add five new print objects to the patch (naming each one, so we can see the firing order) and connect them to the buttons. You should be able to move the print and button objects, change their left-right and top-bottom order, and see that you always get the results you initially intended. **In general, it is wise to use a trigger ("t") object any time you are attaching one object to multiple other objects and need the firing order to remain consistent.**
 
-# Friend Object: delay
+# Friend Object: `delay`
 
-Another friend object for button is the delay object. The name of the object tells us what it will do: it will receive a bang message and delay it for a period of time. Create a new patch that looks like this:
+Another friend object for `button` is the `delay` object. The name of the object tells us what it will do: it will receive a bang message and delay it for a period of time. Create a new patch that looks like this:
 
 ![[1.14.png]]
 

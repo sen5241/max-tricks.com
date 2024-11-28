@@ -2,6 +2,8 @@
 title: max-tricks.com
 ---
 
-max-tricks.com coming soon
+Check out the  [[0 Introduction|20 Objects Curriculum]].
 
-Link to [[metro]]
+More max-tricks.com content coming soon.
+
+

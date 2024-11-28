@@ -57,6 +57,7 @@ This is an introductory course, so some MSP (audio) and Jitter (video) functions
 %%
 **_Note: With the help of Andrea Mazzariello, this series is undergoing a bit of a facelift for Max 7. Please bear with us during the transition._**
 %%
+
 # Things you should have available
 
 Since we stay focused on Max programming, there isn't a lot of software that will be required for using this course. Most importantly, you will need a working copy of Max/MSP/Jitter; you can download a 30-day trial from [here](https://cycling74.com/downloads), with discounted versions available for students. Other than Max, you won't need any specific software. This coursework is system-agnostic, so you can be using either the Mac or Windows operating system without concern. This course is also as usable with Max for Live as it is for the standalone Max program, so having both Live and Max for Live is an option.
