@@ -8,8 +8,8 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Δ Max Tricks 1.0",
-    pageTitleSuffix: "",
+    pageTitle: "Max Tricks", // Δ 1.0
+    pageTitleSuffix: "A project inspired by Darwin Grosse",
     enableSPA: true,
     enablePopovers: false,
     analytics: {
@@ -18,7 +18,7 @@ const config: QuartzConfig = {
     locale: "en-US",
     baseUrl: "max-tricks.com",
     ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "created",
+    defaultDateType: "created", // created, modified, or published
     generateSocialImages: false,
     theme: {
       fontOrigin: "googleFonts",
