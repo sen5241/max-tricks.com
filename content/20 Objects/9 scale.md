@@ -1,5 +1,5 @@
 ---
-title: 9 scale
+title: 9. scale
 ---
 One of the things that Max does very well is translate data from one type to another - or from one range to another. This is important when you are creating generative work, and is critical when you are using hardware devices. In this lesson, we will look at several ways to coerce numbers into data that is easily usable.
 

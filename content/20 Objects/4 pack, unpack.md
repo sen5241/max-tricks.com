@@ -1,3 +1,7 @@
+---
+title: 4. pack/unpack
+---
+
 In the last lesson, we learned the basics of lists: they act as a container for sending multiple values as a single message. However, the process of building up lists one value at a time (using append and prepend objects) is just too painful for words - and luckily Max provides us with several better approaches.
 
 # The pack object

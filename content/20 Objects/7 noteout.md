@@ -1,5 +1,5 @@
 ---
-title: 7 noteout
+title: 7. noteout
 ---
 To this point, we've been watching Max work by viewing the Max window, watching number boxes change and filling message boxes. However, it is a lot more interesting (and fun) to hear the results of our patches as music playback. This tutorial is going to focus on using the various MIDI objects to hear the results of our Max work.
 

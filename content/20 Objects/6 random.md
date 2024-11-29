@@ -1,5 +1,5 @@
 ---
-title: 6 random
+title: 6. random
 ---
 Now that we can generate bang messages with the metro object, and we can generate numbers using the counter object, we are starting to see how we can generate performance and installation patches. However, at the heart of many generative performance systems is random generation. In this lesson, we will look at the many options available for playing with random numbers.
 

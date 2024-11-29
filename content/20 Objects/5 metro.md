@@ -1,5 +1,5 @@
 ---
-title: 5 metro
+title: 5. metro
 ---
 
 So far, everything that we've done has required user action (mouse clicking, dragging or text entry) in order to generate events. But Max is often used to generate event. This tutorial will be all about generated events, with a variety of objects that are made for that purpose.

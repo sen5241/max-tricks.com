@@ -1,5 +1,5 @@
 ---
-title: 13 buffer~
+title: 13. buffer~
 ---
 Working with synthesized waveforms is fun, but a lot of music is created using audio files - and especially looped audio. In this lesson, we are going to work with audio files, which are all based off of a single object: the buffer~ object.
 

@@ -1,5 +1,5 @@
 ---
-title: 12 cycle~
+title: 12. cycle~
 ---
 It's time to start looking at audio processing. This is going to be a long lesson, since we will have to introduce a load of friend objects in order to make our first sound. Don't worry, though - it all comes together in pretty quick fashion, and many of the concepts will be similar to the things you've learned about Max.
 

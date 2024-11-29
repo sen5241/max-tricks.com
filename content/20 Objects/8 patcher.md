@@ -1,5 +1,5 @@
 ---
-title: 8 patcher
+title: 8. patcher
 ---
 We are starting to see our patches become more complicated - and sometimes downright confusing. In this tutorial, we are going to look at several ways to reduce the visual complexity of a patch without reducing the functionality of it.
 

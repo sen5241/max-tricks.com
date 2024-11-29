@@ -1,5 +1,5 @@
 ---
-title: 10 pattr
+title: 10. pattr
 ---
 As our Max patches become more feature-filled, it becomes more important to find a way to access and save our settings for use the next time open the patch. While a simple preset mechanism is provided for small patches, it has fallen out of use in preference to "the pattr system". Using pattr is more than using a single object - it's really about buying into a system of objects used for creating and supporting presets.
 

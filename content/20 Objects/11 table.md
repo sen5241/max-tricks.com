@@ -1,5 +1,5 @@
 ---
-title: 11 table
+title: 11. table
 ---
 In this last Max-focused lesson, we are going to look at ways to store data. There are many different ways to store data in Max; we are going to focus on the table object, which lets us store pairs of number - useful for creating sequences or control settings.
 
