@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: 0. Introduction
 ---
 
 %%
@@ -10,35 +10,52 @@ http://darwingrosse.com/20Objects/lesson02.html
 
 
 
+>[!Foreword]
+> This is an unauthorised\* reproduction of Darwin Grosse's [*20 Objects Curriculum*: A Pragmatic Method for Learning Max/MSP/Jitter and Max for Live](http://20objects.com).
+>
+> It has been replicated here to preserve an important resource for learning [Max](https://cycling74.com).
+>
+> Although I never got to meet Darwin, I consider him and Gregory Taylor my Max *teachers* — I didn't learn Max in any formal setting, but Darwin and Gregory wrote the first Max tutorials which I read and studied in my early days of learning Max. After working with Max for years, there are still gems to be found in these teaching materials.
+>
+> Max is a journey of discovery, and seeing how Darwin and Gregory solved problems shaped *my* approach to problem-solving and my use of Max today more generally (organisationally/logically).
+>
+> \- [Alex](about)
+>
+> \*This reproduction of the **20 Objects Curriculum** has not been approved/endorsed by Cycling '74. Please [contact me](about) with any questions/comments/concerns.
+
+
+
+
 # 20 Objects: A Pragmatic Method for Learning Max/MSP/Jitter and Max for Live
 
 
 ---
 
 Lessons and Texts: 
-- [Introduction](http://darwingrosse.com/20Objects/index.html)
-- [01 - button](http://darwingrosse.com/20Objects/lesson01.html)
-- [02 - number box](http://darwingrosse.com/20Objects/lesson02.html)
-- [03 - message box](http://darwingrosse.com/20Objects/lesson03.html)
-- [04 - pack/unpack](http://darwingrosse.com/20Objects/lesson04.html)
-- [05 - metro](http://darwingrosse.com/20Objects/lesson05.html)
-- [06 - random](http://darwingrosse.com/20Objects/lesson06.html)
-- [07 - noteout](http://darwingrosse.com/20Objects/lesson07.html)
-- [08 - patcher](http://darwingrosse.com/20Objects/lesson08.html)
-- [09 - scale](http://darwingrosse.com/20Objects/lesson09.html)
-- [10 - pattr](http://darwingrosse.com/20Objects/lesson10.html)
-- [11 - table](http://darwingrosse.com/20Objects/lesson11.html)
-- [12 - cycle~](http://darwingrosse.com/20Objects/lesson12.html)
-- [13 - buffer~](http://darwingrosse.com/20Objects/lesson13.html)
-- [14 - svf~](http://darwingrosse.com/20Objects/lesson14.html)
-- [15 - line~](http://darwingrosse.com/20Objects/lesson15.html)
-- [16 - jit.movie](http://darwingrosse.com/20Objects/lesson16.html)
-- [17 - jit.matrix](http://darwingrosse.com/20Objects/lesson17.html)
-- [18 - jit.brcosa](http://darwingrosse.com/20Objects/lesson18.html)
-- [19 - jit.xfade](http://darwingrosse.com/20Objects/lesson19.html)
-- [20 - jit.gl.render](http://darwingrosse.com/20Objects/lesson20.html)
-%%- [~~Conclusion~~](http://darwingrosse.com/20Objects/lesson99.html)%%
-- [Downloads](http://darwingrosse.com/20Objects/downloads.html)
+- [[0 Introduction]]
+- [[1 The button object]]
+- [[2 The number box object]]
+- [[3 The message box object]]
+- [[4 pack, unpack]]
+- [[5 metro]]
+- [[6 random]]
+- [[7 noteout]]
+- [[8 patcher]]
+- [[9 scale]]
+- [[10 pattr]]
+- [[11 table]]
+- [[12 cycle~]]
+- [[13 buffer~]]
+- [[14 svf~]]
+- [[15 line~]]
+- [[16 jit.movie]]
+- [[17 jit.matrix]]
+- [[18 jit.brcosa]]
+- [[19 jit.xfade]]
+- [[20 jit.gl.render]]
+- [[Downloads]]
+%% - [~~Conclusion~~](http://darwingrosse.com/20Objects/lesson99.html)%%
+%% - [Downloads](http://darwingrosse.com/20Objects/downloads.html)%%
 
 
 

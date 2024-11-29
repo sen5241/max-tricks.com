@@ -1,5 +1,5 @@
 ---
-title: jit.gl.render
+title: 20. jit.gl.render
 ---
 In order to work with 3-D graphics, we will need to learn a number of different objects. They all use the jit.gl.render object to do their work, but we will need to have several other objects at work in order to make it all come together. All of these objects carry the jit.gl prefix, and they all are used to render OpenGL graphics into a Jitter window.
 
