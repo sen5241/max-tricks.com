@@ -31,12 +31,12 @@ body {
 --padding: 5px; /* The number of pixels to bring the objects' text and inlets from the left and right sides */
 }
 
-h1 code.max-object,
-h2 code.max-object,
-h3 code.max-object,
-h4 code.max-object,
-h5 code.max-object,
-h6 code.max-object {
+h1 code.max-object, h1 code.max-message,
+h2 code.max-object, h2 code.max-message,
+h3 code.max-object, h3 code.max-message,
+h4 code.max-object, h4 code.max-message,
+h5 code.max-object, h5 code.max-message,
+h6 code.max-object, h6 code.max-message {
 	font-weight: normal;
 }
 
@@ -55,8 +55,10 @@ code.max-message {
 	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
 	vertical-align: middle;
 	position: relative;
-	bottom: -1px;
-	top: -1px;
+// 	bottom: -1px;
+// 	top: -1px;
+	transform: translateY(-1px);
+	font-size: 80%;
 }
 
 

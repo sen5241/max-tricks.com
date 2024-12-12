@@ -10,12 +10,12 @@ export const FormatMaxObjects: QuartzTransformerPlugin = () => ({
         visit(tree, "code", (node) => {
           if (node.lang === "max-object") {
             node.type = "html" as "code"
-            node.value = `<code class="max-object">MAXOBJ: ${node.value}</code>`
+            node.value = `<code class="max-object">${node.value}</code>` // MAXOBJ: 
           }
 
           if (node.lang === "max-message") {
             node.type = "html" as "code"
-            node.value = `<code class="max-message">MAXMESS: ${node.value}</code>`
+            node.value = `<code class="max-message">${node.value}</code>` // MAXMESS: 
           }
 
         })
