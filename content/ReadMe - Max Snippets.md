@@ -2,13 +2,16 @@
 draft: true
 ---
 
+Here are some things to be aware of. The 'Table of Contents' on the right will not strip out tags, so you *can't* use the maxobj shortcut to stylise words in headings.
 
-Hashbang maxobj
-#!maxobj-3-2 patcher
+You can wrap the object names in backticks, but reserve the maxobj shortcut for in-text only.
 
 
+The pattern for producing Max objects is: hashbang maxobj inlets outlets object-name.
+eg. #!maxobj-3-2 patcher
 
-More max-tricks.com content soon. 
+
+Max objects can also be written as 
 ```max-object
 tabs
 ```

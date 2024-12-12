@@ -10,7 +10,7 @@ Hi. My name is Alex Mesker. I'm a [Max Certified Trainer](https://cycling74.com/
 
 
 
-I created **Max Tricks** as a place to throw ideas, patcher snippets, and anything else ranging from reminders/explainers/deep-dives into a singular searchable place… instead of having patchers littered across my hard drives. Others may find its content useful.
+I created **Max Tricks** as a place to throw ideas, patcher snippets, and anything else from reminders/explainers/deep-dives into a singular searchable place… instead of having patchers littered across my hard drives. Others may find its content useful.
 
 I write in [Obsidian](https://obsidian.md) and build/deploy with [Quartz](https://quartz.jzhao.xyz/). This is a living workspace, so expect URLs to change as things settle in.
 
