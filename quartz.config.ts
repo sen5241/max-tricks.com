@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Max Tricks", // Δ 1.0
-    pageTitleSuffix: "A project inspired by Darwin Grosse",
+    pageTitleSuffix: " - Learn Max/MSP/Jitter", // A project inspired by Darwin Grosse
     enableSPA: true,
     enablePopovers: false,
     analytics: {
@@ -73,6 +73,8 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
+      Plugin.FormatMaxObjects(),
+      Plugin.FancyText(),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [

@@ -15,23 +15,36 @@ body {
 
 :root {
 --radius: 3px;
---borderColor: #808080;
---backgroundColour: #333333;
---inletColor: #c0c2c4;
+--backgroundColor: #161616; /* Max 8: #333333 */
+--borderColor: #626262; /* 808080 */
+--inletColor: #a4a4a4; /* Max 9: 949494;  Max 8: #c0c2c4 */
 --outletColor: var(--inletColor);
+--messageBackgroundColor: #2c2c2c;
+--messageInletColor: #707070; // 535353
+--messageOutletColor:  var(--messageInletColor);
 --textColor: #fff;
 --inlet:  radial-gradient(circle at var(--radius) 0%,   var(--inletColor)  0%, var(--inletColor)  calc(var(--radius) - 0px), transparent calc(var(--radius) + 1px), transparent 100%);
 --outlet: radial-gradient(circle at var(--radius) 100%, var(--outletColor) 0%, var(--outletColor) calc(var(--radius) - 0px), transparent calc(var(--radius) + 1px), transparent 100%);
+--messageInlet:  radial-gradient(circle at var(--radius) 0%,   var(--messageInletColor)  0%, var(--messageInletColor)  calc(var(--radius) - 0px), transparent calc(var(--radius) + 1px), transparent 100%);
+--messageOutlet: radial-gradient(circle at var(--radius) 100%, var(--messageOutletColor) 0%, var(--messageOutletColor) calc(var(--radius) - 0px), transparent calc(var(--radius) + 1px), transparent 100%);
+
 --padding: 5px; /* The number of pixels to bring the objects' text and inlets from the left and right sides */
 }
 
-code.max.object {
-	background-color: var(--backgroundColour);
-	color: var(--textColor);
+h1 code.max-object,
+h2 code.max-object,
+h3 code.max-object,
+h4 code.max-object,
+h5 code.max-object,
+h6 code.max-object {
+	font-weight: normal;
+}
+
+code.max-object,
+code.max-message {
 	font-family: Arial;
-	font-size: 12px;
 	line-height: 100%;
-	border-radius: 0px;
+	color: var(--textColor);
 	border-style: solid;
 	padding: 0px;
 	border: 0;
@@ -39,20 +52,54 @@ code.max.object {
 	flex-direction: column;
 	box-sizing: border-box;
 	padding: 0px var(--padding);
+	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+	vertical-align: middle;
+	position: relative;
+	bottom: -1px;
+	top: -1px;
 }
 
+
+code.max-object {
+	background-color: var(--backgroundColor);
+// 	font-size: 12px;
+// 	font-size: 80%;
+	border-radius: 0px;
+}
+
+code.max-message {
+	background-color: var(--messageBackgroundColor);
+// 	font-size: 12px;
+// 	font-size: 80%;
+	border-radius: 6px;
+	padding: 2px var(--padding);
+}
+
+/*
+code.max-message::before {
+	--inlet1: 0px 0px;
+	--inlet2: calc(100% * 1 / (var(--inlets) - 1)) 0px;
+}
+*/
+
+
 /* Make the selection in the callout transparent... only highlighting objects */
-code.max.object::selection {
-	background-color: red;
+code.max-object::selection {
+ 	//background-color: yellow;
 }
 /* ... Simulation of the idea. */
 ::selection {
-	background-color: transparent;
+	/* background-color: transparent; */
 }
 
-
-code.max.object[class*="in"]::before,
-code.max.object[class*="out"]::after {
+code.max-message::before,
+code.max-message::after,
+code.max-object::before,
+code.max-object::after,
+code.max-object[data-inlets]::before,
+code.max-object[data-outlets]::after,
+code.max-object[class*="in"]::before,
+code.max-object[class*="out"]::after {
 	content: '';
 	margin: 0 calc(var(--padding) * -1); /* Negative margin to accommodate the left and right padding */
 	height: calc(var(--radius) + 1px);
@@ -64,6 +111,13 @@ code.max.object[class*="out"]::after {
 	border-width: 0 var(--padding); /* Borders top and bottom only */
 	border-style: solid;
 	border-color: var(--borderColor);
+
+	--ioWidth: 7px; /* Minimum width between inlets/outlets eg. 10.  */
+// 	min-width: max(calc(var(--inlets) * var(--ioWidth)), calc(var(--outlets) * var(--ioWidth)));
+	min-width: calc(max(var(--inlets), var(--outlets)) * var(--ioWidth));
+//	min-width: max(calc(var(--radius) * 2 * (var(--inlets) + 1)), calc(var(--radius) * 2 * (var(--outlets) + 1)));
+
+
 
 	/* Initial values */
 	--inlets: 0;
@@ -101,149 +155,323 @@ code.max.object[class*="out"]::after {
 	--outlet12: calc(100% * 11 / (var(--outlets) - 1)) 0px;
 }
 
-code.max.object[class*="in"]::before {
-	min-width: calc(var(--radius) * 2 * (var(--inlets) + 1));
-	margin-bottom: 1px;
+code.max-message::before,
+code.max-message::after {
+	background-color: transparent;
+	border-color: transparent;
+	position: relative;
 }
 
-code.max.object[class*="out"]::after { 
-	min-width: calc(var(--radius) * 2 * (var(--outlets) + 1));
-	margin-top: 1px;
+code.max-message::before {
+	top: -2px; // Compensate for the padding
+	--inlets: 2;
+	background-image:    var(--messageInlet),  var(--messageInlet);
+	background-position: var(--inlet1), var(--inlet2);
+}
+
+code.max-message::after {
+	bottom: -2px; // Compensate for the padding
+	--outlets: 1;
+	background-image: var(--messageOutlet);
+	background-position: var(--outlet1);
 }
 
 
+code.max-object::before,
+code.max-object[data-inlets]::before,
+code.max-object[class*="in"]::before {
+// 	min-width: calc(var(--radius) * 2 * (var(--inlets) + 1));
+	margin-bottom: 2px;
+}
 
-code.max.object.in0::before {
+code.max-object::after,
+code.max-object[data-outlets]::after,
+code.max-object[class*="out"]::after { 
+// 	min-width: calc(var(--radius) * 2 * (var(--outlets) + 1));
+	margin-top: 2px;
+}
+
+
+code.max-object[data-inlets="0"]::before,
+code.max-object.in0::before {
 	--inlets: 0;
 }
 
-code.max.object.in1::before {
+code.max-object[data-inlets="1"]::before,
+code.max-object.in1::before {
 	--inlets: 1;
 	background-image: var(--inlet);
 	background-position: var(--inlet1);
 }
 
-code.max.object.in2::before {
+code.max-object[data-inlets="2"]::before,
+code.max-object.in2::before {
 	--inlets: 2;
 	background-image:    var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2);
 }
 
-code.max.object.in3::before {
+code.max-object[data-inlets="3"]::before,
+code.max-object.in3::before {
 	--inlets: 3;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3);
 }
-code.max.object.in4::before {
+
+code.max-object[data-inlets="4"]::before,
+code.max-object.in4::before {
 	--inlets: 4;
+	min-width: 1px;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4);
 }
-code.max.object.in5::before {
+
+code.max-object[data-inlets="5"]::before,
+code.max-object.in5::before {
 	--inlets: 5;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5);
 }
-code.max.object.in6::before {
+
+code.max-object[data-inlets="6"]::before,
+code.max-object.in6::before {
 	--inlets: 6;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6);
 }
-code.max.object.in7::before {
+
+code.max-object[data-inlets="7"]::before,
+code.max-object.in7::before {
 	--inlets: 7;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7);
 }
-code.max.object.in8::before {
+
+code.max-object[data-inlets="8"]::before,
+code.max-object.in8::before {
 	--inlets: 8;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8);
 }
-code.max.object.in9::before {
+
+code.max-object[data-inlets="9"]::before,
+code.max-object.in9::before {
 	--inlets: 9;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9);
 }
-code.max.object.in10::before {
+
+code.max-object[data-inlets="10"]::before,
+code.max-object.in10::before {
 	--inlets: 10;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9), var(--inlet10);
 }
-code.max.object.in11::before {
+
+code.max-object[data-inlets="11"]::before,
+code.max-object.in11::before {
 	--inlets: 11;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9), var(--inlet10), var(--inlet11);
 }
-code.max.object.in12::before {
+
+code.max-object[data-inlets="12"]::before,
+code.max-object.in12::before {
 	--inlets: 12;
 	background-image:    var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet),  var(--inlet);
 	background-position: var(--inlet1), var(--inlet2), var(--inlet3), var(--inlet4), var(--inlet5), var(--inlet6), var(--inlet7), var(--inlet8), var(--inlet9), var(--inlet10), var(--inlet11), var(--inlet12);
 }
 
 
-code.max.object.out0::after {
+
+code.max-object[data-outlets="0"]::after,
+code.max-object.out0::after {
 	--outlets: 0;
 }
 
-code.max.object.out1::after {
+code.max-object[data-outlets="1"]::after,
+code.max-object.out1::after {
 	--outlets: 1;
 	background-image: var(--outlet);
 	background-position: var(--outlet1);
 }
 
-code.max.object.out2::after {
+code.max-object[data-outlets="2"]::after,
+code.max-object.out2::after {
 	--outlets: 2;
 	background-image:    var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2);
 }
 
-code.max.object.out3::after {
+code.max-object[data-outlets="3"]::after,
+code.max-object.out3::after {
 	--outlets: 3;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3);
 }
-code.max.object.out4::after {
+
+code.max-object[data-outlets="4"]::after,
+code.max-object.out4::after {
 	--outlets: 4;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4);
 }
-code.max.object.out5::after {
+
+code.max-object[data-outlets="5"]::after,
+code.max-object.out5::after {
 	--outlets: 5;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5);
 }
-code.max.object.out6::after {
+
+code.max-object[data-outlets="6"]::after,
+code.max-object.out6::after {
 	--outlets: 6;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6);
 }
-code.max.object.out7::after {
+
+code.max-object[data-outlets="7"]::after,
+code.max-object.out7::after {
 	--outlets: 7;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7);
 }
-code.max.object.out8::after {
+
+code.max-object[data-outlets="8"]::after,
+code.max-object.out8::after {
 	--outlets: 8;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8);
 }
-code.max.object.out9::after {
+
+code.max-object[data-outlets="9"]::after,
+code.max-object.out9::after {
 	--outlets: 9;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9);
 }
-code.max.object.out10::after {
+
+code.max-object[data-outlets="10"]::after,
+code.max-object.out10::after {
 	--outlets: 10;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9), var(--outlet10);
 }
-code.max.object.out11::after {
+
+code.max-object[data-outlets="11"]::after,
+code.max-object.out11::after {
 	--outlets: 11;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9), var(--outlet10), var(--outlet11);
 }
-code.max.object.out12::after {
+
+code.max-object[data-outlets="12"]::after,
+code.max-object.out12::after {
 	--outlets: 12;
 	background-image:    var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet),  var(--outlet);
 	background-position: var(--outlet1), var(--outlet2), var(--outlet3), var(--outlet4), var(--outlet5), var(--outlet6), var(--outlet7), var(--outlet8), var(--outlet9), var(--outlet10), var(--outlet11), var(--outlet12);
+}
+
+
+
+
+
+
+
+// CSS Houdini
+// Using properties we can stack multiple types of transforms!
+// But this is not in mainline firefox yet :(
+// @property --mov-y {
+//   syntax: '<length>';
+//   initial-value: 0px;
+//   inherits: false;
+// }
+// @property --rot-y {
+//   syntax: '<angle>';
+//   initial-value: 0deg;
+//   inherits: false;
+// }
+:root {
+  --mov-y: 0px;
+  --rot-y: 0deg;
+}
+.ft- {
+  @keyframes rainbow-animate {
+      0% {
+        background-position: 0px 0;
+      }
+      50% {
+        background-position: 100px 0;
+      }
+      100% {
+        background-position: 200px 0;
+      }
+    };
+  @keyframes shake-animate {
+    // CSS Houdini
+    // 0% { --mov-y: 1px }
+    // 100% { --mov-y: -1px }
+    0% { transform: translateY(1px) }
+    100% { transform: translateY(-1px) }
+  };
+  @keyframes spin-animate {
+    // CSS Houdini
+    // 0% { --rot-y: 0deg }
+    // 100% { --rot-y: 360deg }
+    0% { transform: rotateY(0deg) }
+    100% { transform: rotateY(-360deg) }
+  };
+  @for $i from 0 through 10 {
+    &char {
+      animation-delay: 10ms;
+    }
+  }
+  &letters {
+    white-space: nowrap;
+  }
+  &letters span {
+    white-space: pre;
+  }
+  &rainbow {
+    background: repeating-linear-gradient(to right,#cb94ff 0px, #028ba1 20px, #4dc725 40px, #ff941a 60px, #d21b1b 80px, #cb94ff 100px);
+    background-size: 100px;
+    background-clip: text;
+    color: transparent !important;
+    & span, p {
+      color: transparent;
+    }
+    animation: rainbow-animate 2s linear infinite;
+  }
+  &shake .char {
+    animation: shake-animate 0.05s linear infinite alternate;
+    display: inline-block;
+    @for $i from 0 through 10 {
+      &:nth-child(10n + #{$i}) {
+        animation-delay: #{$i * -20ms};
+      }
+    }
+  }
+  &wave .char {
+    animation: shake-animate 0.20s ease-in-out infinite alternate;
+    display: inline-block;
+    @for $i from 0 through 10 {
+      &:nth-child(10n + #{$i}) {
+        animation-delay: #{$i * -40ms};
+      }
+    }
+  }
+  &spin .char {
+    animation: spin-animate 1.00s ease-in-out infinite;
+    display: inline-block;
+    @for $i from 0 through 10 {
+      &:nth-child(10n + #{$i}) {
+        animation-delay: #{$i * 40ms - 400ms};
+      }
+    }
+  }
+  // CSS Houdini
+  // &letters .char {
+  //   transform: translateY(var(--mov-y)) rotateY(var(--rot-y));
+  // }
 }
